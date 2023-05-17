@@ -3,7 +3,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // Home Screen
 import HomeScreen from '../screens/DashBoard';
 
-
 // Search Screen
 import SearchScreen from '../screens/SearchScreen';
 
@@ -13,35 +12,35 @@ import CartScreen from '../screens/CartScreen';
 // User Profile Screen
 import UserProfileScreen from '../screens/UserProfileScreen';
 
-
-
-//  Auth Screen 
-import LoginScreen from '../screens/LoginScreen'
+//  Auth Screen
+import LoginScreen from '../screens/LoginScreen';
 import GroupScreen from '../screens/Group/GroupScreen';
-
-
-
+import DashBoardScreen from '../screens/DashBoard';
 
 const StackConfig = {headerShown: false};
 
-const HomeStack = createNativeStackNavigator();
+const DashBoardStack = createNativeStackNavigator();
 const SearchStack = createNativeStackNavigator();
 const CartStack = createNativeStackNavigator();
 const UserStack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
+const GroupStack = createNativeStackNavigator();
 
 export function DashBoard(props: any) {
   return (
-    <HomeStack.Navigator screenOptions={StackConfig}>
-      <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
-      
-    </HomeStack.Navigator>
+    <DashBoardStack.Navigator screenOptions={StackConfig}
+    initialRouteName='DashBoardScreen'
+    >
+      <DashBoardStack.Screen name="DashBoardScreen" component={DashBoardScreen} />
+    </DashBoardStack.Navigator>
   );
 }
 
 export function Search(props: any) {
   return (
-    <SearchStack.Navigator screenOptions={StackConfig}>
+    <SearchStack.Navigator screenOptions={StackConfig} 
+    initialRouteName='SearchScreen'
+    >
       <SearchStack.Screen name="SearchScreen" component={SearchScreen} />
     </SearchStack.Navigator>
   );
@@ -51,21 +50,16 @@ export function Cart(props: any) {
   return (
     <CartStack.Navigator screenOptions={StackConfig}>
       <CartStack.Screen name="CartScreen" component={CartScreen} />
-      
-    </CartStack.Navigator> 
+    </CartStack.Navigator>
   );
 }
 export function Group(props: any) {
   return (
-    <UserStack.Navigator
-      initialRouteName="UserProfileScreen"
+    <GroupStack.Navigator
+      initialRouteName="GroupScreen"
       screenOptions={StackConfig}>
-      <UserStack.Screen
-        name="GroupScreen"
-        component={GroupScreen}
-      />
-     
-    </UserStack.Navigator>
+      <GroupStack.Screen name="GroupScreen" component={GroupScreen} />
+    </GroupStack.Navigator>
   );
 }
 export function Account(props: any) {
@@ -77,7 +71,6 @@ export function Account(props: any) {
         name="UserProfileScreen"
         component={UserProfileScreen}
       />
-     
     </UserStack.Navigator>
   );
 }
@@ -87,8 +80,7 @@ export function Login(props: any) {
     <AuthStack.Navigator
       initialRouteName="LoginScreen"
       screenOptions={StackConfig}>
-         <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
-       
-      </AuthStack.Navigator>
+      <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
+    </AuthStack.Navigator>
   );
 }
